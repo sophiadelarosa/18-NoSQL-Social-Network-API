@@ -1,4 +1,4 @@
-//thought is a model that requires the reaction subdocument schema
+//thought model that requires the reaction subdocument schema
 
 const { Schema, model, types } = require('mongoose');
 //moment required for date in thought schema
@@ -49,10 +49,11 @@ const ThoughtSchema = new Schema (
             default: Date.now,
             get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
-        username: {
-            type: String,
-            required: true
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Users'
         },
+
         reactions: [ReactionSchema]
     },
     {

@@ -1,4 +1,4 @@
-//User is a model
+//User model
 
 const { Schema, model } = require('mongoose');
 
