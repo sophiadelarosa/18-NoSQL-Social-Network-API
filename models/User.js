@@ -2,6 +2,27 @@
 
 const { Schema, model } = require('mongoose');
 
+//Friend schema
+const FriendSchema = new Schema (
+    {
+        friendId:  {
+            type: Schema.Types.ObjectId,
+            //default: ()=> new types.ObjectId(),
+            ref: 'Users'
+        },
+        username: {
+            type: String,
+            required: true
+        }
+    },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false
+    }
+)
+
 const UserSchema = new Schema (
     {
         username: 
@@ -26,11 +47,7 @@ const UserSchema = new Schema (
             ref: 'Thoughts'
         }],
         //array of _id referencing the user model (self-reference)
-        friends: 
-        [{
-            type: Schema.Types.ObjectId,
-            ref: 'Users'
-        }]
+        friends: [FriendSchema]
     },
     {
         toJSON: 

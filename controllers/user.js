@@ -1,6 +1,6 @@
 //require mongoose and models 
 const { ObjectId } = require('mongoose').Types;
-const { User, Thoughts } = require('../models');
+const { User, Thoughts, Thought } = require('../models');
 
 //export these functions to be called in routes
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
         .then((user) => 
         !user
             ? res.status(404).json({ message: 'No user with that id!' })
-            : res.json(user)
+            : Thought.deleteMany({ _id: {$in: user.thoughts}})
         )
         .then(() => res.json({ message: 'User deleted!' }))
         .catch((err) => res.status(500).json(err));

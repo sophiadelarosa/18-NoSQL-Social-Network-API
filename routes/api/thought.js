@@ -12,19 +12,19 @@ const {
     deleteReaction
 } = require('../../controllers/thought');
 
-// /api/thoughts
+// /api/thought
 // get all thoughts, create thought
 router.route('/').get(getThoughts).post(createThought);
 
-// /api/thoughts/:thoughtId
+// /api/thought/:thoughtId
 // get one thought, update a thought, delete a thought
 router.route('/:thoughtId').get(getOneThought).post(updateThought).delete(deleteThought);
 
-// /api/thoughts/:thoughtId/reactions
+// /api/thought/:thoughtId/reactions
 // create a reaction
 router.route('/:thoughtId/reactions').post(createReaction);
 
-// /api/thoughts/:thoughtId/reactions/:reactionId
+// /api/thought/:thoughtId/reactions/:reactionId
 // pull a reaction from a single thought, to delete by it's reactionId
 router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
 
